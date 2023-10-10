@@ -1,36 +1,34 @@
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
+
+import horoscopeDatas from '../data/horoscope.json'
 
 const HoroscopeContext = createContext()
 
-export const useHoroscopeContext = () => {
-    return useContext(HoroscopeContext)
-}
-
-export const HoroscopeProvider = ({ children }) => {
-    const [horoscopeData, setHoroscopeData] = useState([]);
+export function HoroscopeProvider ({ children }) {
+    const [horoscopeData, setHoroscopeData] = useState(horoscopeDatas);
     const [currentIndex, setCurrentIndex] = useState(0);
     
-    const fetchHoroscopeData = () => {
-        // Contenu de la fonction fetchHoroscopeData
-        fetch('/public/data/horoscope.json')
-        .then(response => response.json())
-        // Récupérer les données de l'horoscope.
-        .then(data => {
-            setHoroscopeData(data);
-        })
-        .catch(error => console.error(error));
-
-        // // console.log(horoscopeData);
-        // // Mettre à jour l'état avec setHoroscopeData.
-        setHoroscopeData(horoscopeData);
-    };
-
+        // const fetchHoroscopeData = () => {
+        //     // Contenu de la fonction fetchHoroscopeData
+        //     fetch('/public/data/horoscope.json')
+        //     .then(response => response.json())
+        //     // Récupérer les données de l'horoscope.
+        //     .then(data => {
+        //         setHoroscopeData(data);
+        //     })
+        //     .catch(error => console.error(error));
+    
+        //     // // console.log(horoscopeData);
+        //     // // Mettre à jour l'état avec setHoroscopeData.
+        //     setHoroscopeData(horoscopeData);
+        // };
+    
     const showHoroscope = () => {
         // Vérifiez d'abord si les données de l'horoscope sont disponibles.
         if (horoscopeData.length === 0) {
-            return null; // Ou un message de chargement, ou tout autre chose selon votre préférence.
+            return null;
         }
-        
+
         const horoscope = horoscopeData[currentIndex];
         return (
             <div>
@@ -58,22 +56,22 @@ export const HoroscopeProvider = ({ children }) => {
     const handleArrowClick = (direction) => {
         // Gérer les clics sur les flèches className=arrow-left et arrow-right
         if (direction === '.arrow-left') {
-            setCurrentIndex(prevIndex =>
-                prevIndex === 0 ? horoscopeData.length - 1 : prevIndex - 1
+            setCurrentIndex(currentIndex =>
+                currentIndex === 0? horoscopeData.length - 1 : currentIndex - 1
             );
         } else if (direction === '.arrow-right') {
-            setCurrentIndex(prevIndex =>
-                prevIndex === horoscopeData.length - 1 ? 0 : prevIndex + 1
+            setCurrentIndex(currentIndex =>
+                currentIndex === horoscopeData.length - 1? 0 : currentIndex + 1
             );
         }
     };
-
+    
     return (
         <HoroscopeContext.Provider value={{
             horoscopeData,
-            setHoroscopeData,
             currentIndex,
-            fetchHoroscopeData,
+            setCurrentIndex,
+            setHoroscopeData,
             showHoroscope,
             changeTop,
             handleArrowClick
@@ -81,4 +79,8 @@ export const HoroscopeProvider = ({ children }) => {
             {children}
         </HoroscopeContext.Provider>
     )
+}
+
+export function useHoroscopeContext() {
+    return useContext(HoroscopeContext);
 }

@@ -63,12 +63,12 @@ function Horoscope() {
     const handleArrowClick = (direction) => {
         // Gérer les clics sur les flèches className=arrow-left et arrow-right
         if (direction === '.arrow-left') {
-            setCurrentIndex(prevIndex =>
-                prevIndex === 0 ? horoscopeData.length - 1 : prevIndex - 1
+            setCurrentIndex(currentIndex =>
+                currentIndex === 0? horoscopeData.length - 1 : currentIndex - 1
             );
         } else if (direction === '.arrow-right') {
-            setCurrentIndex(prevIndex =>
-                prevIndex === horoscopeData.length - 1 ? 0 : prevIndex + 1
+            setCurrentIndex(currentIndex =>
+                currentIndex === horoscopeData.length - 1? 0 : currentIndex + 1
             );
         }
     };
@@ -97,7 +97,7 @@ function Horoscope() {
                 </div>
 
                 <article>
-                    <p id="datejour"></p>
+                    <p id="datejour">10/10/2023</p>
                     {showHoroscope()}
                 </article>
             </section>
