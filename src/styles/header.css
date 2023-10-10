@@ -1,0 +1,32 @@
+header {
+    width: 300px;
+    height: 100vh;
+    text-align: center;
+
+    border: 1px solid #BFBFBF;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: fixed;
+}
+
+header a {
+    text-decoration: none;
+    color : #909090;
+}
+
+header .active, 
+header a:hover {
+    color: #000;
+}
+
+header ul {
+    padding: 0;
+}
+header li {
+    list-style-type: none;
+    margin-bottom: 30px;
+    font-weight: 100;
+}

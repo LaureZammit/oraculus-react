@@ -1,0 +1,37 @@
+.title404 {
+    font-size: 32px;
+    margin: 0;
+    padding:0;
+    letter-spacing: 5px;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+
+    color: #000;
+
+    margin-top: 300px;
+    margin-left: 100px;
+}
+
+.p404 {
+    font-size: 26px;
+    color:#000;
+    text-align: center;
+    margin:0;
+    padding:0;
+
+    margin-left: 100px;
+    margin-top: 80px;
+}
+
+.a404 {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-size: 28px;
+    padding-top: 12px;
+    margin-top: 20px;
+}
+
+.a404:hover {
+    color: #FF0000
+}

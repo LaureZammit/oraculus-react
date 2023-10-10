@@ -31,7 +31,7 @@
 # Les objectifs du projet - Oraculus
 
 ## Objectif du projet
-Rendre le site réactif aux clics pour voir l'horoscope du mois.
+Transformer un site JavaScript en React.
 
 ### Outils
 
