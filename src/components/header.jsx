@@ -8,24 +8,20 @@ function Header() {
         horoscopeData,
         currentIndex,
         setCurrentIndex,
-        setHoroscopeData,
-        showHoroscope,
-        changeTop,
-        handleArrowClick
+        // setHoroscopeData,
+        // showHoroscope,
+        // changeTop,
+        // handleArrowClick
     } = useHoroscopeContext();
 
-    // const handleArrowClick = (direction) => {
-    //     // Gérer les clics sur les flèches className=arrow-left et arrow-right
-    //     if (direction === '.arrow-left') {
-    //         setCurrentIndex(currentIndex =>
-    //             currentIndex === 0? horoscopeData.length - 1 : currentIndex - 1
-    //         );
-    //     } else if (direction === '.arrow-right') {
-    //         setCurrentIndex(currentIndex =>
-    //             currentIndex === horoscopeData.length - 1? 0 : currentIndex + 1
-    //         );
-    //     }
-    // };
+    function handleArrowClick(direction) {
+        if(direction === "left") {
+            setCurrentIndex(currentIndex > 0 ? currentIndex - 1 : horoscopeData.length - 1);
+        }
+        if(direction === "right") {
+            setCurrentIndex(currentIndex < horoscopeData.length - 1? currentIndex + 1 : 0);
+        }
+    } 
 
     return (
         <header>
@@ -47,10 +43,10 @@ function Header() {
             </nav>
 
             <div className="arrow">
-                <Link className="arrow-left" to="#" onClick={() => handleArrowClick('.arrow-right')}>
+                <Link className="arrow-left" to="#" onClick={() => handleArrowClick('left')}>
                     <i className="fa-solid fa-chevron-left"></i>
                 </Link>
-                <Link className="arrow-right" to="#" onClick={() => handleArrowClick('.arrow-right')}>
+                <Link className="arrow-right" to="#" onClick={() => handleArrowClick('right')}>
                     <i className="fa-solid fa-chevron-right"></i>
                 </Link>
             </div>
