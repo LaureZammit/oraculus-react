@@ -7,7 +7,7 @@
 <div align="center">
   <a name="readme-top"></a>
   <a href="https://laurezammit.github.io/oraculus-js/">
-    <img src="/img/logo-oraculus.png" alt="Logo" width="180">
+    <img src="/public/img/logo-oraculus.png" alt="Logo" width="280">
   </a>
 
 <h1 align="center">Oraculus</h1>
@@ -32,6 +32,8 @@
 
 ## Objectif du projet
 Transformer un site JavaScript en React.
+
+Changement de l'horoscope au clic sur les flèches et sur les étiquettes hautes.
 
 ### Outils
 
