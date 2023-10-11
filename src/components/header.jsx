@@ -8,20 +8,21 @@ function Header() {
         horoscopeData,
         currentIndex,
         setCurrentIndex,
-        // setHoroscopeData,
-        // showHoroscope,
-        // changeTop,
-        // handleArrowClick
     } = useHoroscopeContext();
 
-    function handleArrowClick(direction) {
-        if(direction === "left") {
-            setCurrentIndex(currentIndex > 0 ? currentIndex - 1 : horoscopeData.length - 1);
+    const handleArrowClick = (direction) => {
+        // Gérer les clics sur les flèches className=arrow-left et arrow-right
+        if (direction === 'left') {
+            setCurrentIndex(currentIndex =>
+                currentIndex === 0? horoscopeData.length - 1 : currentIndex - 1
+            );
+        } else if (direction === 'right') {
+            setCurrentIndex(currentIndex =>
+                currentIndex === horoscopeData.length - 1? 0 : currentIndex + 1
+            );
         }
-        if(direction === "right") {
-            setCurrentIndex(currentIndex < horoscopeData.length - 1? currentIndex + 1 : 0);
-        }
-    } 
+    };
+    console.log(currentIndex);
 
     return (
         <header>

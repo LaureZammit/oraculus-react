@@ -1,29 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { useHoroscopeContext } from '../components/horoscopecontext';
+
 
 function Horoscope() {
-    const [horoscopeData, setHoroscopeData] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const fetchHoroscopeData = () => {
-        // Obtenir les données de l'horoscope à partir du fichier ../data/horoscope.json.
-        fetch('/public/data/horoscope.json')
-        .then(response => response.json())
-        // Récupérer les données de l'horoscope.
-        .then(data => {
-            setHoroscopeData(data);
-        })
-        .catch(error => console.error(error));
-
-        // // console.log(horoscopeData);
-        // // Mettre à jour l'état avec setHoroscopeData.
-        setHoroscopeData(horoscopeData);
-    };
-
-    useEffect(() => {
-        fetchHoroscopeData(); // Charger les données lorsque le composant est monté.
-    }, []);
+    const { horoscopeData, currentIndex, setCurrentIndex } = useHoroscopeContext();
 
     const showHoroscope = () => {
         // Vérifiez d'abord si les données de l'horoscope sont disponibles.
